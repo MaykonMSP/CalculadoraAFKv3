@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora AFK VIP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💎 Calculadora AFK</h1>
+
+    <label>💠 Gemas atuais:</label>
+    <input id="gemasAtuais" type="number" min="0" placeholder="Ex: 47">
+
+    <label>⏰ Hora final do farm:</label>
+    <input id="horaFinal" type="time">
+
+    <div class="vip-option">
+      <input type="checkbox" id="vip">
+      <label for="vip">Ativar modo VIP (💎x6)</label>
+    </div>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
