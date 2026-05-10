@@ -58,10 +58,10 @@ Todos os caminhos do projeto sao relativos, entao CSS, JS, favicon e audio funci
 
 ## Screenshot
 
-Adicione aqui uma imagem da interface depois da publicacao:
 
 ```md
-![Screenshot da Calculadora AFK](assets/images/screenshot.png)
+![Screenshot da Calculadora AFK](<img width="1135" height="799" alt="image" src="https://github.com/user-attachments/assets/7786b824-903a-40fe-820d-1d219019eca7" />
+)
 ```
 
 ## Licenca
