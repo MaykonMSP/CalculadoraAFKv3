@@ -26,7 +26,7 @@ O projeto foi mantido simples: HTML, CSS e JavaScript puro, pronto para rodar co
 
 ## Audio
 
-O projeto ja esta preparado para uma trilha local em MP3:
+O projeto usa uma trilha local em MP3 neste caminho:
 
 ```text
 assets/
@@ -35,6 +35,8 @@ assets/
 ```
 
 Use somente arquivos com permissao, criados por voce ou royalty-free. Nao envie musicas oficiais/protegidas do jogo para o repositorio sem autorizacao.
+
+Para trocar a musica, substitua `assets/audio/theme.mp3` por outro MP3 seguro mantendo o mesmo nome.
 
 ## Tecnologias
 
