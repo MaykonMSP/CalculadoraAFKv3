@@ -56,13 +56,6 @@ Para trocar a musica, substitua `assets/audio/theme.mp3` por outro MP3 seguro ma
 
 Todos os caminhos do projeto sao relativos, entao CSS, JS, favicon e audio funcionam corretamente no GitHub Pages.
 
-## Screenshot
-
-
-```md
-![Screenshot da Calculadora AFK](<img width="1135" height="799" alt="image" src="https://github.com/user-attachments/assets/7786b824-903a-40fe-820d-1d219019eca7" />
-)
-```
 
 ## Licenca
 
