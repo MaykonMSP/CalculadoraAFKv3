@@ -1,32 +1,99 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Calculadora AFK VIP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculadora AFK para estimar ciclos, gemas ganhas e total final do farm.">
+  <meta name="theme-color" content="#110814">
+  <title>Calculadora AFK | Farm Tracker</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>💎 Calculadora AFK</h1>
+  <main class="app-shell">
+    <section class="tracker" aria-labelledby="appTitle">
+      <header class="tracker__header">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true">AFK</span>
+          <div>
+            <p class="brand__eyebrow">Farm tracker</p>
+            <h1 id="appTitle">Calculadora AFK</h1>
+          </div>
+        </div>
 
-    <label>💠 Gemas atuais:</label>
-    <input id="gemasAtuais" type="number" min="0" placeholder="Ex: 47">
+        <button
+          class="sound-toggle"
+          id="soundToggle"
+          type="button"
+          aria-label="Ativar musica de fundo"
+          aria-pressed="false"
+          title="Ativar musica"
+        >
+          <span class="sound-toggle__bar" aria-hidden="true"></span>
+          <span class="sound-toggle__bar" aria-hidden="true"></span>
+          <span class="sound-toggle__bar" aria-hidden="true"></span>
+        </button>
+      </header>
 
-    <label>⏰ Hora final do farm:</label>
-    <input id="horaFinal" type="time">
+      <div class="rule-strip" aria-label="Regras atuais do calculo">
+        <span>80s por ciclo</span>
+        <span>3 gemas normal</span>
+        <span>6 gemas VIP</span>
+      </div>
 
-    <div class="vip-option">
-      <input type="checkbox" id="vip">
-      <label for="vip">Ativar modo VIP (💎x6)</label>
-    </div>
+      <form class="calculator" id="calculatorForm" novalidate>
+        <div class="field" id="gemasField">
+          <label for="gemasAtuais">Gemas atuais</label>
+          <input
+            id="gemasAtuais"
+            name="gemasAtuais"
+            type="number"
+            inputmode="numeric"
+            min="0"
+            step="1"
+            placeholder="Ex: 47"
+            autocomplete="off"
+            aria-describedby="gemasError"
+          >
+          <p class="field__error" id="gemasError" aria-live="polite"></p>
+        </div>
 
-    <button onclick="calcular()">Calcular</button>
+        <div class="field" id="horaField">
+          <label for="horaFinal">Hora final do farm</label>
+          <input
+            id="horaFinal"
+            name="horaFinal"
+            type="time"
+            aria-describedby="horaError"
+          >
+          <p class="field__error" id="horaError" aria-live="polite"></p>
+        </div>
 
-    <div id="resultado"></div>
-  </div>
+        <label class="vip-toggle" for="vip">
+          <span>
+            <strong>Modo VIP</strong>
+            <small>Usa 6 gemas por ciclo completo.</small>
+          </span>
+          <input id="vip" name="vip" type="checkbox">
+          <span class="vip-toggle__control" aria-hidden="true"></span>
+        </label>
 
-  <script src="script.js"></script>
+        <button class="calculate-button" type="submit">
+          Calcular farm
+        </button>
+      </form>
+
+      <section class="result-panel" id="resultPanel" aria-live="polite" aria-label="Resultado do calculo">
+        <p class="result-panel__empty">Informe os dados para estimar o farm.</p>
+      </section>
+    </section>
+  </main>
+
+  <!-- Coloque um arquivo MP3 autorizado ou royalty-free em assets/audio/theme.mp3. -->
+  <audio id="backgroundMusic" loop preload="metadata">
+    <source src="assets/audio/theme.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
