@@ -24,19 +24,6 @@ O projeto foi mantido simples: HTML, CSS e JavaScript puro, pronto para rodar co
 4. Marque o modo VIP se estiver usando o bonus.
 5. Clique em **Calcular farm** ou pressione Enter.
 
-## Audio
-
-O projeto usa uma trilha local em MP3 neste caminho:
-
-```text
-assets/
-  audio/
-    theme.mp3
-```
-
-Use somente arquivos com permissao, criados por voce ou royalty-free. Nao envie musicas oficiais/protegidas do jogo para o repositorio sem autorizacao.
-
-Para trocar a musica, substitua `assets/audio/theme.mp3` por outro MP3 seguro mantendo o mesmo nome.
 
 ## Tecnologias
 
