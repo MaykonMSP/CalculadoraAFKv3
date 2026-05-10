@@ -9,7 +9,7 @@ const STORAGE_KEYS = {
   gemasAtuais: "calculadoraAfk.gemasAtuais",
   horaFinal: "calculadoraAfk.horaFinal",
   vip: "calculadoraAfk.vip",
-  musicaMutada: "calculadoraAfk.musicaMutada",
+  musicaAtiva: "calculadoraAfk.musicaAtiva",
 };
 
 function converterParaSegundos(hora, minuto, segundo = 0) {
@@ -148,8 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const soundToggle = document.getElementById("soundToggle");
 
   let audioDisponivel = true;
-  let usuarioInteragiu = false;
-  let musicaMutada = lerStorage(STORAGE_KEYS.musicaMutada) === "true";
+  let musicaAtiva = lerStorage(STORAGE_KEYS.musicaAtiva) === "true";
 
   function limparErro(campoId, input, erroId) {
     document.getElementById(campoId).classList.remove("is-invalid");
@@ -206,12 +205,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function atualizarBotaoSom() {
-    soundToggle.setAttribute("aria-pressed", String(musicaMutada));
+    soundToggle.setAttribute("aria-pressed", String(musicaAtiva));
     soundToggle.setAttribute(
       "aria-label",
-      musicaMutada ? "Ativar musica de fundo" : "Mutar musica de fundo",
+      musicaAtiva ? "Desativar musica de fundo" : "Ativar musica de fundo",
     );
-    soundToggle.title = musicaMutada ? "Ativar musica" : "Mutar musica";
+    soundToggle.title = musicaAtiva ? "Desativar musica" : "Ativar musica";
+  }
+
+  function definirMusicaAtiva(ativa) {
+    musicaAtiva = ativa;
+    salvarStorage(STORAGE_KEYS.musicaAtiva, String(ativa));
+    atualizarBotaoSom();
   }
 
   function marcarAudioIndisponivel() {
@@ -221,23 +226,39 @@ document.addEventListener("DOMContentLoaded", () => {
     soundToggle.setAttribute("aria-label", "Musica indisponivel");
   }
 
+  function pausarMusica() {
+    music.pause();
+    music.muted = true;
+    definirMusicaAtiva(false);
+  }
+
   function tentarTocarMusica() {
-    if (!audioDisponivel || musicaMutada) {
+    if (!audioDisponivel || !musicaAtiva) {
       return;
     }
 
+    music.muted = false;
     music.play().catch(() => {
-      marcarAudioIndisponivel();
+      definirMusicaAtiva(false);
+      soundToggle.title = "Clique para ativar a musica";
     });
   }
 
   function registrarInteracao() {
-    usuarioInteragiu = true;
+    tentarTocarMusica();
+  }
+
+  function ativarMusica() {
+    if (!audioDisponivel) {
+      return;
+    }
+
+    definirMusicaAtiva(true);
     tentarTocarMusica();
   }
 
   carregarPreferencias();
-  music.muted = musicaMutada;
+  music.muted = !musicaAtiva;
   atualizarBotaoSom();
 
   window.addEventListener("pointerdown", registrarInteracao, { once: true });
@@ -257,19 +278,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    musicaMutada = !musicaMutada;
-    music.muted = musicaMutada;
-    salvarStorage(STORAGE_KEYS.musicaMutada, String(musicaMutada));
-    atualizarBotaoSom();
-
-    if (musicaMutada) {
-      music.pause();
+    if (musicaAtiva) {
+      pausarMusica();
       return;
     }
 
-    if (usuarioInteragiu) {
-      tentarTocarMusica();
-    }
+    ativarMusica();
   });
 
   form.addEventListener("submit", (event) => {
