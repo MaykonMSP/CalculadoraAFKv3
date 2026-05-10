@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Calculadora AFK</title>
+  <defs>
+    <linearGradient id="fire" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd84c"/>
+      <stop offset="0.55" stop-color="#ff7a1a"/>
+      <stop offset="1" stop-color="#ec184f"/>
+    </linearGradient>
+    <linearGradient id="ice" x1="16" y1="44" x2="48" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35e6ff"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#120915"/>
+  <path d="M34 5 10 35h18l-4 24 30-36H36L34 5Z" fill="url(#fire)"/>
+  <path d="M20 39h24l-6 7H16l4-7Z" fill="url(#ice)"/>
+</svg>
